@@ -31,7 +31,16 @@ class AnalysisControllerTest {
                                 """))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.totalDocuments").value(5))
+                .andExpect(jsonPath("$.documentsAnalyzed").value(5))
                 .andExpect(jsonPath("$.features").isArray())
+                .andExpect(jsonPath("$.features[0].name").exists())
+                .andExpect(jsonPath("$.headings").isArray())
+                .andExpect(jsonPath("$.rankedFeatures").isArray())
+                .andExpect(jsonPath("$.rankedFeatures[0].featureName").exists())
+                .andExpect(jsonPath("$.rankedFeatures[0].frequency").isNumber())
+                .andExpect(jsonPath("$.rankedFeatures[0].percentage").isNumber())
+                .andExpect(jsonPath("$.rankedFeatures[0].rank").isNumber())
+                .andExpect(jsonPath("$.summary").isString())
                 .andExpect(jsonPath("$.processingTime").isNumber());
     }
 }

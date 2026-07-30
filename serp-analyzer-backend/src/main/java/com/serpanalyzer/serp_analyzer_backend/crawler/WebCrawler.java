@@ -64,7 +64,14 @@ public class WebCrawler {
     }
 
     private PageContent createMockPageContent(String url, long crawlTime) {
-        String content = "Mock crawled content for " + url + " with crime reporting and journal analysis context.";
+        String content = """
+                Crime Type: burglary. Crime Location: central district. Date of Incident: 2026-07-30.
+                Time of Incident: 09:30. Victim Information was recorded. Suspect Information was supplied.
+                Police Statement and Witness Statement were attached as Evidence. Arrest Information and Court Proceedings followed.
+                Source Attribution: mock SERP document.
+                Abstract Introduction Related Work Literature Review Methodology Dataset Model Architecture Training Experiments Results Discussion Conclusion References.
+                Mock crawled content for %s.
+                """.formatted(url);
 
         return new PageContent(
                 UUID.randomUUID().toString(),
