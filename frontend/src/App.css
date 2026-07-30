@@ -385,12 +385,28 @@
   font-size: 12px;
 }
 
+.module-card {
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.module-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px rgba(18, 24, 38, 0.12);
+}
+
+.form--crime,
+.form--journal {
+  grid-template-columns: 2fr 0.7fr auto;
+}
+
 @media (max-width: 1180px) {
   .hero-panel,
   .grid--two,
   .grid--three,
   .cards,
-  .form {
+  .form,
+  .form--crime,
+  .form--journal {
     grid-template-columns: 1fr;
   }
 

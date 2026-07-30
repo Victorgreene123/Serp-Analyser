@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Activity, AlertTriangle, RefreshCcw } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Activity, AlertTriangle, ArrowLeft, RefreshCcw } from 'lucide-react'
 import { Navbar } from '../components/Navbar'
 import { SearchPanel } from '../components/SearchPanel'
 import { StatCard } from '../components/StatCard'
@@ -106,12 +107,20 @@ export function Dashboard() {
         status={backendStatus}
         statusLabel={statusLabel}
         rightSlot={
-          <button className="button button--secondary" type="button" onClick={handleAnalyze} disabled={loading}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <RefreshCcw size={16} />
-              Refresh
-            </span>
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Link to="/" className="button button--secondary" style={{ textDecoration: 'none' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                <ArrowLeft size={14} />
+                Home
+              </span>
+            </Link>
+            <button className="button button--secondary" type="button" onClick={handleAnalyze} disabled={loading}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                <RefreshCcw size={16} />
+                Refresh
+              </span>
+            </button>
+          </div>
         }
       />
 
