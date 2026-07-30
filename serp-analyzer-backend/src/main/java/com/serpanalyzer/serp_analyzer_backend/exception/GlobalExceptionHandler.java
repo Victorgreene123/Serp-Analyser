@@ -26,6 +26,20 @@ public class GlobalExceptionHandler {
                 .body(new ErrorResponse("Invalid request", LocalDateTime.now()));
     }
 
+    @ExceptionHandler(SearchException.class)
+    public ResponseEntity<ErrorResponse> handleSearchException(SearchException exception) {
+        return ResponseEntity
+                .badRequest()
+                .body(new ErrorResponse(exception.getMessage(), LocalDateTime.now()));
+    }
+
+    @ExceptionHandler(CrawlException.class)
+    public ResponseEntity<ErrorResponse> handleCrawlException(CrawlException exception) {
+        return ResponseEntity
+                .badRequest()
+                .body(new ErrorResponse(exception.getMessage(), LocalDateTime.now()));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleInternalServerError(Exception exception) {
         return ResponseEntity

@@ -13,25 +13,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AnalysisControllerTest {
+class SearchControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void analyzeReturnsOk() throws Exception {
-        mockMvc.perform(post("/api/analyze")
+    void searchReturnsOkAndJsonArray() throws Exception {
+        mockMvc.perform(post("/api/search")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                    "query": "crime reports",
-                                    "limit": 10,
-                                    "analysisType": "CRIME"
+                                    "query": "crime reporting papers",
+                                    "limit": 2
                                 }
                                 """))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.totalDocuments").value(5))
-                .andExpect(jsonPath("$.features").isArray())
-                .andExpect(jsonPath("$.processingTime").isNumber());
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$[0].title").value("Crime Analysis Report"))
+                .andExpect(jsonPath("$[0].url").value("https://example.com/crime1"));
     }
 }
