@@ -1,16 +1,21 @@
 package com.serpanalyzer.serp_analyzer_backend.controller;
 
-import com.serpanalyzer.serp_analyzer_backend.dto.AnalysisRequest;
-import com.serpanalyzer.serp_analyzer_backend.dto.AnalysisResponse;
-import com.serpanalyzer.serp_analyzer_backend.service.AnalysisService;
-import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.serpanalyzer.serp_analyzer_backend.dto.AnalysisRequest;
+import com.serpanalyzer.serp_analyzer_backend.dto.AnalysisResponse;
+import com.serpanalyzer.serp_analyzer_backend.service.AnalysisService;
+
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class AnalysisController {
 
     private final AnalysisService analysisService;

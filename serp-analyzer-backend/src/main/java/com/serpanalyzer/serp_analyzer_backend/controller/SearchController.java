@@ -4,6 +4,8 @@ import com.serpanalyzer.serp_analyzer_backend.dto.SearchRequest;
 import com.serpanalyzer.serp_analyzer_backend.model.SearchResult;
 import com.serpanalyzer.serp_analyzer_backend.search.SearchService;
 import jakarta.validation.Valid;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173")
 public class SearchController {
 
     private final SearchService searchService;

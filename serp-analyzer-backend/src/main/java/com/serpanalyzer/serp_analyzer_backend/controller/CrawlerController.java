@@ -5,6 +5,8 @@ import com.serpanalyzer.serp_analyzer_backend.crawler.CrawlerService;
 import com.serpanalyzer.serp_analyzer_backend.dto.CrawlRequest;
 import com.serpanalyzer.serp_analyzer_backend.dto.CrawlResponse;
 import jakarta.validation.Valid;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class CrawlerController {
 
     private final CrawlerService crawlerService;
